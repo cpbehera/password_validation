@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>password validation</title>
+        <style>
+        ul li{
+            color: red;
+        }
+    </style>
+    </head>
+    <body>
+        <div>
+            <label for="Password">Enter your Password:-</label>
+            <input type="password" name="" id="passwordInput">
+        </div>
+
+        <ul id="list">
+            <li>At least 8 characters long</li>
+            <li>Contains at least one uppercase letter</li>
+            <li>Contains at least one lowercase letter</li>
+            <li>Contains at least one number</li>
+            <li>Contains at least one special character (e.g. @, !, #, $, %, ^,
+                &, *, (, ), -, +)</li>
+        </ul>
+
+
+        <script>
+         function validatePassword(){
+            let passwordInput = document.getElementById('passwordInput');
+            let list = document.getElementsByTagName("li");
+
+            console.log(list[0]);
+
+            passwordInput.addEventListener('input',()=>{
+
+                // Checking password length is greaterthan or equal to 8 or not
+
+                if(passwordInput.value.length >= 8){
+                    list[0].style.color = "green";
+                }else{
+                    list[0].style.color = "red";
+                }
+
+
+                // Checking password contains uppercase letters or not
+
+                var upperCaseLetters = /[A-Z]/g;
+
+                if(passwordInput.value.match(upperCaseLetters)){
+                     list[1].style.color = "green";
+                }else{
+                    list[1].style.color = "red";
+                }
+
+                // Checking password contains lowercase letters or not
+
+                var lowerCaseLetters = /[a-z]/g;
+
+                if(passwordInput.value.match(lowerCaseLetters)){
+                     list[2].style.color = "green";
+                }else{
+                    list[2].style.color = "red";
+                }
+
+
+                // Checking password contains numbers or not
+
+                var numbers = /[0-9]/g;
+
+                if(passwordInput.value.match(numbers)){
+                     list[3].style.color = "green";
+                }else{
+                    list[3].style.color = "red";
+                }
+
+
+                // Checking password contains special characters or not
+
+                var regex_symbols= /[-!$%^&*()_+|~=`{}\[\]:\/;<>?,.@#]/;
+
+                if(passwordInput.value.match(regex_symbols)){
+                     list[4].style.color = "green";
+                }else{
+                    list[4].style.color = "red";
+                }
+
+                
+
+            });
+         }
+
+         validatePassword();
+    </script>
+    </body>
+</html>
